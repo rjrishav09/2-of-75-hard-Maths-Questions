@@ -6,6 +6,7 @@ import 'customWidget/ButtonIcon.dart';
 import 'customWidget/customWidgetMethods.dart';
 
 class AskOperator extends StatelessWidget {
+  static const String id = 'AskOperator-screen';
   const AskOperator({super.key, required this.isQuiz});
   final bool isQuiz;
   @override

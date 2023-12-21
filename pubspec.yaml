@@ -39,6 +39,12 @@ dependencies:
   modal_progress_hud_nsn: ^0.4.0
   universal_html: ^2.2.4
   circular_countdown_timer: ^0.2.3
+  introduction_screen: ^3.1.12
+  flutter_lints: ^3.0.1
+  flutter_neumorphic_plus: ^3.3.0
+  animated_text_kit: ^4.2.2
+  velocity_x: ^4.1.2
+
 
 
 
@@ -46,10 +52,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: true
+  ios: true
+  macos: true
+  windows: true
+  web: true
+  image_path: "assets/LogoIcon.png"
+
 flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

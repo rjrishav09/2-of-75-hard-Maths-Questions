@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import '../HomeScreen.dart';
 import '../widgets/build_images.dart';
 
-import 'home.dart';
-
-class PageOnBorarding extends StatelessWidget {
+class PageOnBorarding extends StatefulWidget {
+  static const String id = 'PageOnBorarding-screen';
   const PageOnBorarding({Key? key}) : super(key: key);
 
+  @override
+  State<PageOnBorarding> createState() => _PageOnBorardingState();
+}
+
+class _PageOnBorardingState extends State<PageOnBorarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,34 +20,24 @@ class PageOnBorarding extends StatelessWidget {
           PageViewModel(
             title: 'Fantasy',
             body:
-                'Lorem ipsum dolor sit dim amet,mea regione diamet princpes at.',
+                'Please like your photos:.',
             image: const BuildImages(image: 'assets/images/1.jpg'),
             decoration: getPageDecoration(),
           ),
           PageViewModel(
             title: 'Science fiction',
             body:
-                'Lorem ipsum dolor sit dim amet,mea regione diamet princpes at.',
+                'Science is a Game:',
             image: const BuildImages(image: 'assets/images/2.jpg'),
             decoration: getPageDecoration(),
           ),
           PageViewModel(
             title: 'Text books',
             body:
-                'Lorem ipsum dolor sit dim amet,mea regione diamet princpes at.',
+                'Welcome EveryOne My Name is Rishav:',
             image: const BuildImages(image: 'assets/images/3.jpg'),
             decoration: getPageDecoration(),
           ),
-          PageViewModel(
-            title: 'Kids books',
-            body:
-                'Lorem ipsum dolor sit dim amet,mea regione diamet princpes at.',
-            image: const BuildImages(image: 'assets/images/4.jpg'),
-            footer: ElevatedButton(
-              onPressed: () => goToHome(context),
-              child: const Text('Home'),
-            ),
-          )
         ],
         next: const Icon(Icons.arrow_forward),
         done: const Text('Done', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -88,7 +83,7 @@ class PageOnBorarding extends StatelessWidget {
   void goToHome(context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const PageHome()),
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
     );
   }
 }

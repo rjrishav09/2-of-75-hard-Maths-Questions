@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'AskOperator.dart';
+import 'Banner/BannerScreen.dart';
 import 'customWidget/DisplayButton.dart';
 
 import 'customWidget/customWidgetMethods.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String id = 'Home-screen';
   const HomeScreen({super.key});
 
   @override
@@ -29,6 +32,11 @@ class HomeScreen extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
+                BannerWidget(),
+                SizedBox(height: 20,),
+                Divider(height: 1,thickness: 2,),
+                SizedBox(height: 10,),
+                Text("Welcome"),
                 SizedBox(
                     height: MediaQuery.of(context).size.height * 0.6,
                     child: Image.asset('assets/HomeScreen.jpg')),

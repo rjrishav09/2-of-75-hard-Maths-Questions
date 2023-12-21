@@ -2,7 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 
 class BannerWidget extends StatefulWidget {
   const BannerWidget({Key? key}) : super(key: key);
@@ -13,91 +13,6 @@ class BannerWidget extends StatefulWidget {
 
 class _BannerWidgetState extends State<BannerWidget> {
 
-  late final RewardedAd rewardedAd;
-  final String rewardedAdUnitId = "ca-app-pub-6098110260976293/3247917193";
-
-  late final RewardedAd rewardedAd1;
-  final String rewardedAdUnitId1 = "ca-app-pub-6098110260976293/1113812098";
-
-  @override
-  void initState() {
-    super.initState();
-    _loadRewardedAd();
-    _loadRewardedAd1();
-  }
-
-  void _loadRewardedAd(){
-    RewardedAd.load(adUnitId: rewardedAdUnitId,
-        request: AdRequest(),
-        rewardedAdLoadCallback: RewardedAdLoadCallback(
-            onAdLoaded: (RewardedAd ad){
-              print("$ad loaded");
-              rewardedAd = ad;
-              _setFullScreenContentCallback();
-            },
-            onAdFailedToLoad: (LoadAdError error){
-              print("Failed to load rewarded ad, Error: $error");
-            }));
-  }
-  void _setFullScreenContentCallback(){
-    if(rewardedAd == null) return;
-    rewardedAd.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (RewardedAd ad) => print("$ad onAdShowFullScreenContent"),
-      onAdDismissedFullScreenContent: (RewardedAd ad){
-        print("$ad onAdDismissedFullScreenContent");
-        ad.dispose();
-      },
-      onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error){
-        print("$ad onAdFailedToShowFullScreenContent: $error");
-        ad.dispose();
-      },
-      onAdImpression: (RewardedAd ad)=> print("$ad Impression Occured"),
-    );
-  }
-
-  void _showRewardedAd(){
-    rewardedAd.show(
-        onUserEarnedReward: (AdWithoutView ad,RewardItem rewardItem){
-          num amount = rewardItem.amount;
-          print("You earned: $amount");
-        });
-  }
-
-  void _loadRewardedAd1(){
-    RewardedAd.load(adUnitId: rewardedAdUnitId1,
-        request: AdRequest(),
-        rewardedAdLoadCallback: RewardedAdLoadCallback(
-            onAdLoaded: (RewardedAd ad1){
-              print("$ad1 loaded");
-              rewardedAd1 = ad1;
-              _setFullScreenContentCallback1();
-            },
-            onAdFailedToLoad: (LoadAdError error1){
-              print("Failed to load rewarded ad, Error: $error1");
-            }));
-  }
-  void _setFullScreenContentCallback1(){
-    if(rewardedAd1 == null) return;
-    rewardedAd1.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (RewardedAd ad1) => print("$ad1 onAdShowFullScreenContent"),
-      onAdDismissedFullScreenContent: (RewardedAd ad1){
-        print("$ad1 onAdDismissedFullScreenContent");
-        ad1.dispose();
-      },
-      onAdFailedToShowFullScreenContent: (RewardedAd ad1, AdError error1){
-        print("$ad1 onAdFailedToShowFullScreenContent: $error1");
-        ad1.dispose();
-      },
-      onAdImpression: (RewardedAd ad1)=> print("$ad1 Impression Occured"),
-    );
-  }
-  void _showRewardedAd1(){
-    rewardedAd1.show(
-        onUserEarnedReward: (AdWithoutView ad1,RewardItem rewardItem){
-          num amount = rewardItem.amount;
-          print("You earned: $amount");
-        });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,14 +77,14 @@ class _BannerWidgetState extends State<BannerWidget> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Expanded(child: NeumorphicButton(
-                    onPressed: (){_showRewardedAd();},
+                    onPressed: (){},
                     style: NeumorphicStyle(color: Colors.yellow),
                     child: Text('SPEAK',textAlign: TextAlign.center,),
                   ),),
 
                   SizedBox(width: 20,),
                   Expanded(child: NeumorphicButton(
-                    onPressed: (){_showRewardedAd1();},
+                    onPressed: (){},
                     style: NeumorphicStyle(color: Colors.yellow),
                     child: Text('LISTEN',textAlign: TextAlign.center),
                   ),),
